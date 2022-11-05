@@ -1,10 +1,15 @@
-import { setupCounter } from './counter.js'
+import { addChat } from './publicChats.js'
+
 document.querySelector('#username').innerHTML = `
-  <div>
-      <div class="inputname">
-          <input type="text" id="UName" name="Chatname">
-          <p>s</p>
+      <div>
+          <h1>Name</h1> 
       </div>
-      <p>s</p>
-  </div>
+      <div class="input-name">  
+          <input type="text" id="UName" name="Chatname" placeholder="Anon123">
+      </div>
 `;
+document.getElementById('public-chat').appendChild(addChat(4));
+
+
+
+//add a button listener
