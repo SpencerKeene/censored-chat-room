@@ -12,7 +12,7 @@ document.querySelector("#username").innerHTML = `
 
 
 //middle part / second part of the page
-document.getElementById("public-chat").appendChild(getButtons(10));
+document.getElementById("public-chat").appendChild(getButtons(5));
 
 function getButtons(Qty){
     return addChat(Qty);
