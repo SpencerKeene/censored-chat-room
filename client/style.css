@@ -40,6 +40,14 @@
   border: 3px solid #722525;
 }
 
+.public-chat-name{
+  float: left;
+  width: 80px;
+  height: 30px;
+  padding-top: 1.2%;
+  font-size: 100%;
+}
+
 .chat-display-template:hover{
   background-color: #ffffffc0;
 }
@@ -49,6 +57,7 @@
   width: auto;
   height: 30px;
   padding: 5px;
+  align-items: center;
   border: 3px solid #000000;
 }
 
@@ -56,6 +65,7 @@
   margin:  auto;
   text-align: center;
 }
+
 #public-chat{
   overflow-y: auto;
   margin: 1% auto;
@@ -82,5 +92,73 @@
 body {
   display: center;
   place-items: center;
+}
+
+#private-input-buttons{
+  margin: 1% auto;
+  width: 50%;
+  padding: 5px;
+  padding-left: 0;
+  place-items: center;
+}
+
+#create-private-room{
+  width: 150px;
+  height: 50px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  float: left;
+  background-color: #ffffff;
+}
+
+#create-private-room:hover{
+  width: 152px;
+  height: 52px;
+  background-color: #556cd07d;
+}
+
+#create-private-room:active{
+  width: 148px;
+  height: 48px;
+  background-color: #ffffff;
+}
+
+#join-private-room{
+  width: 150px;
+  height: 50px;
+  margin-left: 2px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  float: left;
+  background-color: #ffffff;
+}
+
+#join-private-room:hover{
+  width: 152px;
+  height: 52px;
   
+  margin-left: 0;
+  background-color: #556cd07d;
+}
+
+#join-private-room:active{
+  width: 148px;
+  height: 48px;
+  margin-left: 4px;
+  background-color: #ffffff;
+}
+
+#room-code-title{
+  float: right;
+}
+
+#private-code{
+  margin-top: 2px;
+  width: 93%;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #000000;
+}
+#private-input-buttons{
+  display:block;
 }
