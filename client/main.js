@@ -10,7 +10,6 @@ document.querySelector("#username").innerHTML = `
       </div>
 `;
 
-
 //middle part / second part of the page
 document.getElementById("public-chat").appendChild(getButtons(5));
 
