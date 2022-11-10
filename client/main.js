@@ -33,7 +33,7 @@ for(let button of buttons){
     });
 }
 
-//third part of the page / bottom of the page
+//third part of the page / bottom of the page (second last)
 document.querySelector("#private-input-buttons").innerHTML = `
     <div>
         <button id="create-private-room">Create Private Room</button>
@@ -52,6 +52,14 @@ document.querySelector("#private-input-buttons").innerHTML = `
     
 `;
 
+//radio buttons third segment
+document.querySelector("#radio-buttons").innerHTML = `
+        <input type="radio" id="public" name="rButton" value="Public">
+        <label for="public">Public</label>
+        <input type="radio" id="private" name="rButton" value="Private">
+        <label for="private">Private</label>
+`;
+
 var privateCode;
 
 document.getElementById("join-private-room").addEventListener("click", (e) => {
@@ -65,11 +73,23 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
     
 });
 
+var roomType = "";
+
+const radioButtons = document.querySelectorAll('input[name="rButton"]');
 document.getElementById("create-private-room").addEventListener("click", (e) =>{
-    //request to create a room and redirect the user to that private chatroom instance
     //below are notes
     //http redirect tests
     //location.replace("#")
     //location.href = "#";
     //alert("created");
+
+    for(const radioButton of radioButtons){
+        if(radioButton.checked){
+            roomType = radioButton.value;
+            break;
+        }
+    }
+    if(roomType == ""){
+        alert("Please select a room type.");
+    }
 });
