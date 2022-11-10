@@ -6,22 +6,159 @@
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 14px;
-  font-weight: 300;
 
-  background-color: #e4cfcf;
+  background-color: #dfc9c9;
+  -webkit-text-size-adjust: 100%;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#username{
+  margin: 5% auto;
+  width: 50%;
+  padding: 10px;
+  place-items: center;
+  justify-content: center;
+  display: flex;
+  
+}
+
+.join-public-chat:hover{
+  background-color: #3920c793;
+  width: 84px;
+  height: 32px;
+}
+
+.join-public-chat:active{
+  background-color: #f5ededf6;
+  width: 78px;
+  height: 28px;
+}
+
+.join-public-chat{
+  float: right;
+  width: 80px;
+  height: 30px;
+  border: 3px solid #722525;
+}
+
+.public-chat-name{
+  float: left;
+  width: 80px;
+  height: 30px;
+  padding-top: 1.2%;
+  font-size: 100%;
+}
+
+.chat-display-template:hover{
+  background-color: #ffffffc0;
+}
+.chat-display-template{
+  background-color: #ffffff71;
+  margin: 5px auto;
+  width: auto;
+  height: 30px;
+  padding: 5px;
+  align-items: center;
+  border: 3px solid #000000;
+}
+
+#box{
+  margin:  auto;
+  text-align: center;
+}
+
+#public-chat{
+  overflow-y: auto;
+  margin: 1% auto;
+  padding: 2px 4px 4px 2px;
+  width: 50%;
+  min-height: 300px;
+  max-height: 300px;
+  background-color: #ffffff6e;
+  border: 3px solid #000000;
+}
+
+#UName{
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+
+.input-name {
+  padding: 5px;
 }
 
 body {
-  margin: 0;
-  display: flex;
+  display: center;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+}
+
+#private-input-buttons{
+  margin: 1% auto;
+  width: 50%;
+  padding: 5px;
+  padding-left: 0;
+  place-items: center;
+}
+
+#create-private-room{
+  width: 150px;
+  height: 50px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  float: left;
+  background-color: #ffffff;
+}
+
+#create-private-room:hover{
+  width: 152px;
+  height: 52px;
+  background-color: #556cd07d;
+}
+
+#create-private-room:active{
+  width: 148px;
+  height: 48px;
+  background-color: #ffffff;
+}
+
+#join-private-room{
+  width: 150px;
+  height: 50px;
+  margin-left: 2px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  float: left;
+  background-color: #ffffff;
+}
+
+#join-private-room:hover{
+  width: 152px;
+  height: 52px;
+  
+  margin-left: 0;
+  background-color: #556cd07d;
+}
+
+#join-private-room:active{
+  width: 148px;
+  height: 48px;
+  margin-left: 4px;
+  background-color: #ffffff;
+}
+
+#room-code-title{
+  float: right;
+}
+
+#private-code{
+  margin-top: 2px;
+  width: 93%;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #000000;
+}
+#private-input-buttons{
+  display:block;
 }
