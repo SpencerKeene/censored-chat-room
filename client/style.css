@@ -68,7 +68,7 @@
 
 #public-chat{
   overflow-y: auto;
-  margin: 1% auto;
+  margin: auto;
   padding: 2px 4px 4px 2px;
   width: 50%;
   min-height: 300px;
@@ -170,4 +170,38 @@ body {
   padding-left: 0;
   padding-right: 0;
   place-items: center;
+}
+
+#refresh-tab{
+  background-image: linear-gradient(#faaca8, #ddd6f3);
+  margin:  auto;
+  text-align: center;
+  width: 50%;
+  padding: 5px;
+  height: 38px;
+  border: 1px solid #000000;
+}
+
+#refresh-btn{
+  float: left;
+  background-image: url("/reload.png");
+  background-size: 40px 40px;
+  width: 40px;
+  height: 40px;
+}
+
+#refresh-btn:hover{
+  opacity: 0.8;
+  background-color: rgba(237, 239, 219, 0.447);
+  background-size: 39px 39px;
+  width: 39px;
+  height: 39px;
+}
+
+#refresh-btn:active{
+  opacity: 0.9;
+  background-color: rgba(187, 191, 154, 0.447);
+  background-size: 41px 41px;
+  width: 41px;
+  height: 41px;
 }
