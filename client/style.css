@@ -94,7 +94,7 @@ body {
   place-items: center;
 }
 
-#private-input-buttons{
+#input-buttons{
   margin: 1% auto;
   width: 50%;
   padding: 5px;
@@ -102,7 +102,7 @@ body {
   place-items: center;
 }
 
-#create-private-room{
+#create-chat-room{
   width: 150px;
   height: 50px;
   border: 1px solid #000000;
@@ -111,13 +111,13 @@ body {
   background-color: #ffffff;
 }
 
-#create-private-room:hover{
+#create-chat-room:hover{
   width: 152px;
   height: 52px;
   background-color: #556cd07d;
 }
 
-#create-private-room:active{
+#create-chat-room:active{
   width: 148px;
   height: 48px;
   background-color: #ffffff;
@@ -159,7 +159,7 @@ body {
   text-align: center;
   border: 1px solid #000000;
 }
-#private-input-buttons{
+#input-buttons{
   display:block;
 }
 

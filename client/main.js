@@ -34,9 +34,9 @@ for(let button of buttons){
 }
 
 //third part of the page / bottom of the page (second last)
-document.querySelector("#private-input-buttons").innerHTML = `
+document.querySelector("#input-buttons").innerHTML = `
     <div>
-        <button id="create-private-room">Create Private Room</button>
+        <button id="create-chat-room">Create Chat Room</button>
     </div>
     <div id="room-code-title">
         <button id="join-private-room">Join Private Room</button>
