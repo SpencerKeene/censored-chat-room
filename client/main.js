@@ -33,6 +33,10 @@ for(let button of buttons){
     });
 }
 
+document.getElementById("refresh-tab").innerHTML = `
+    <button id="refresh-btn"></button>
+`;
+
 //third part of the page / bottom of the page (second last)
 document.querySelector("#input-buttons").innerHTML = `
     <div>
@@ -76,7 +80,7 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
 var roomType = "";
 
 const radioButtons = document.querySelectorAll('input[name="rButton"]');
-document.getElementById("create-private-room").addEventListener("click", (e) =>{
+document.getElementById("create-chat-room").addEventListener("click", (e) => {
     //below are notes
     //http redirect tests
     //location.replace("#")
@@ -92,4 +96,8 @@ document.getElementById("create-private-room").addEventListener("click", (e) =>{
     if(roomType == ""){
         alert("Please select a room type.");
     }
+});
+
+document.getElementById("refresh-btn").addEventListener("click", (e) => {
+    //fetch from api
 });
