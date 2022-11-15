@@ -11,7 +11,7 @@ class Chatroom {
         this.name = name
         this.privacy = Privacy[privacy.toUpperCase()]
 
-        if (!this.privacy) {
+        if (this.privacy === undefined) {
             const expected = Object.keys(Privacy).map(s => s.toLowerCase()).join('/')
             throw new Error(`Error: Invalid privacy type. Expected ${expected}, recieved ${privacy}`)
         }
@@ -24,6 +24,10 @@ class Chatroom {
 
     get privacyString() {
         return Object.keys(Privacy)[this.privacy].toLowerCase()
+    }
+
+    isPublic() {
+        return this.privacy === Privacy.PUBLIC
     }
 
     toResponseObject() {

@@ -28,13 +28,29 @@ exports.create_chatroom = (req, res, next) => {
 }
 
 exports.get_all_chatrooms = (req, res, next) => {
-    // TODO: implement get_all_chatrooms
+    const chatroomsArray = Array.from(chatrooms.values())
+    const publicChatrooms = chatroomsArray.filter(chatroom => chatroom.isPublic())
+    const responseChatrooms = publicChatrooms.map(chatroom => chatroom.toResponseObject())
+    res.status(200).json({
+        chatrooms: responseChatrooms,
+        count: responseChatrooms.length
+    })
 }
 
 exports.join_chatroom = (req, res, next) => {
+    const chatroomId = parseInt(req.params.chatroomId)
+    console.log(chatrooms, chatroomId)
     if (req.get('Upgrade') !== 'websocket') return next()
 
-    const chatroomId = req.params.chatroomId
+    if (!chatrooms.has(chatroomId)){
+        return res.status(404).json({
+            "error": {
+                "message": "chatroom not found!"
+            }
+        })
+    }
+
+    
     console.log(`connecting to room ${chatroomId}`)
     // TODO: implement join_chatroom
 }
