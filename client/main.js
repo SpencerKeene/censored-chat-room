@@ -1,6 +1,6 @@
 import { addChat } from './publicChats.js'
 //api url
-const url = "http://localhost:3000/chatrooms";
+const url = "http://localhost:3000";
 
 //top part/ first part of the page
 document.querySelector("#username").innerHTML = `
@@ -150,7 +150,7 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
             privacy: roomType
         } 
     
-        let request = new Request(url, {
+        let request = new Request(url+"/chatrooms", {
             method: 'POST',
             body: JSON.stringify(data),
             headers: new Headers({
@@ -158,8 +158,8 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
             })
         });
     
-        fetch(request).then((Response) => {
-            //location.replace("#"); //not sure how it is handles yet
+        fetch(request).then(Response => {
+            console.log(Response.json());
         });
         //fetch ends here
     }
