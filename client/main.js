@@ -1,4 +1,6 @@
 import { addChat } from './publicChats.js'
+//api url
+const url = "http://localhost:3000/chatrooms";
 
 //top part/ first part of the page
 document.querySelector("#username").innerHTML = `
@@ -18,7 +20,6 @@ function getButtons(Qty){
 }
 
 const buttons = document.getElementsByName("join-public-chat");
-const url = "";
 
 var roomCode;
 var userName;
@@ -48,9 +49,9 @@ for(let button of buttons){
             })
         });
 
-        fetch(request).then((Response) => {
+        /*fetch(url).then((Response) => {
             //location.replace("#"); //not sure how it is handles yet
-        });
+        });*/
         //fetch ends here
     });
 }
@@ -61,8 +62,9 @@ document.getElementById("refresh-tab").innerHTML = `
 
 //third part of the page / bottom of the page (second last)
 document.querySelector("#input-buttons").innerHTML = `
-    <div>
+    <div id=create>
         <button id="create-chat-room">Create Chat Room</button>
+        <input type="text" id="chatroom-name" name="chatname" placeholder="Chatroom name" required>
     </div>
     <div id="room-code-title">
         <button id="join-private-room">Join Private Room</button>
@@ -105,7 +107,7 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
         userName: userName
     } 
 
-    let request = new Request(url, {
+    let request = new Request(url+"/chatrooms", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: new Headers({
@@ -115,6 +117,7 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
 
     fetch(request).then((Response) => {
         //location.replace("#"); //not sure how it is handles yet
+        
     });
     //fetch ends here
 });
@@ -123,6 +126,7 @@ var roomType = "";
 //create a chatroom
 const radioButtons = document.querySelectorAll('input[name="rButton"]');
 document.getElementById("create-chat-room").addEventListener("click", (e) => {
+    let roomname = document.getElementById("chatroom-name").value;
     for(const radioButton of radioButtons){
         if(radioButton.checked){
             roomType = radioButton.value;
@@ -132,6 +136,9 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
     if(roomType == ""){
         alert("Please select a room type.");
     }
+    else if(roomname == ""){
+        alert("Please enter a name for your chat room");
+    }
     else{
         userName = document.getElementById("UName").value;
         if(userName == ""){
@@ -139,7 +146,7 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
         }
         //fetch starts below
         let data = {
-            userName: userName,
+            name: roomname,
             privacy: roomType
         } 
     

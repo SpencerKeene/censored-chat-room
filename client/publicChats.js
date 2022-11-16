@@ -1,19 +1,17 @@
 //chat information will come from the server on request
 //below will be temporary data for testing and placeholding
+
+//import { get_all_chatrooms } from "../ajax_server/api/controllers/chatrooms";
+
+//import { Chatroom } from "../ajax_server/api/models/Chatroom";
+
 //this function is how the buttons would be created 
 var Qty = 5;
-var chats;
+
 //request and reload public chatrooms
-/*export function addChat(){
-
-  fetch('addurl').then((reponse) =>{
-    return response.json(); //returns a response
-  }).then((data) => {
-    chats = data;           //gets the data
-  }).catch((error) => {
-      console.log(error);
-  });
-
+/*export function addChat(url){
+  let chats = get_all_chatrooms();
+  
   var newChats = document.createDocumentFragment();
   for(let chat of chats){ // let object in list of objects
     var addChat = document.createElement('div');
