@@ -1,4 +1,4 @@
-import { addChat } from './publicChats.js'
+import { addChats } from './publicChats.js'
 //api url
 const url = "http://localhost:3000";
 
@@ -12,8 +12,10 @@ document.querySelector("#username").innerHTML = `
       </div>
 `;
 
+addChats(url+"/chatrooms");
+
 //middle part / second part of the page
-document.getElementById("public-chat").appendChild(getButtons()); //getbuttons will fetch the list of objects
+//document.getElementById("public-chat").appendChild(getButtons(url+"/chatrooms")); //getbuttons will fetch the list of objects
 
 function getButtons(Qty){
     return addChat(Qty);
@@ -130,6 +132,7 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
     for(const radioButton of radioButtons){
         if(radioButton.checked){
             roomType = radioButton.value;
+            radioButton.checked = false;
             break;
         }
     }
@@ -145,11 +148,12 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
             userName = "Anon123";
         }
         //fetch starts below
+        
         let data = {
             name: roomname,
             privacy: roomType
         } 
-    
+   
         let request = new Request(url+"/chatrooms", {
             method: 'POST',
             body: JSON.stringify(data),
@@ -158,14 +162,25 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
             })
         });
     
-        fetch(request).then(Response => {
-            console.log(Response.json());
-        });
+        fetch(request)
+            .then(Response => Response.json())
+            .then(json => console.log(json.chatroom.id));
         //fetch ends here
     }
     
 });
+var refresh = setTimeout(refreshPageLoop, 5000);
+function refreshPageLoop(){
+    refreshPage();
+    refresh = setTimeout(refreshPageLoop, 5000);
+}
+
+function refreshPage(){
+    addChats(url+"/chatrooms");
+}
 
 document.getElementById("refresh-btn").addEventListener("click", (e) => {
-    document.getElementById("public-chat").replaceChild(getButtons());
+    document.getElementById("refresh-btn").disabled = true;
+    refreshPage();
+    document.getElementById("refresh-btn").disabled = false;
 });
