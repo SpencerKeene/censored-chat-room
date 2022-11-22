@@ -37,10 +37,12 @@ exports.get_all_chatrooms = (req, res, next) => {
     })
 }
 
-exports.join_chatroom = (req, res, next) => {
-    const chatroomId = parseInt(req.params.chatroomId)
-    console.log(chatrooms, chatroomId)
-    if (req.get('Upgrade') !== 'websocket') return next()
+exports.join_chatroom = (req, socket, head) => {
+    const urlPrefix = "/chatrooms/"
+
+    if (!req.url.startsWith(urlPrefix)) return
+
+    const chatroomId = parseInt(req.url.slice(urlPrefix.length))
 
     if (!chatrooms.has(chatroomId)){
         return res.status(404).json({
@@ -49,8 +51,9 @@ exports.join_chatroom = (req, res, next) => {
             }
         })
     }
-
     
     console.log(`connecting to room ${chatroomId}`)
-    // TODO: implement join_chatroom
+
+    const chatroom = chatrooms.get(chatroomId)
+    chatroom.forwardUpgrade(req, socket, head)
 }
