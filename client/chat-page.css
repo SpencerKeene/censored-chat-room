@@ -36,14 +36,33 @@ h2{
 
 .mainContainer{
     display: flex;
-    
+    background-color: aliceblue;
+    border: 1px solid #000000;
 }
 
 
 .chatWindow{
+    overflow-y: auto;
+    margin:  auto;
     background-color: aliceblue;
     width: 100%;
     height: 100%;
+}
+
+.messages{
+    width: inherit;
+    min-height: 40px;
+    background-color: transparent;
+    
+
+}
+.msgText{
+    background-color: transparent;
+    padding: 1%;
+    float: left;
+    overflow-wrap: break-word;
+    letter-spacing: auto;
+    width: 95%;
 }
 
 .message{
@@ -51,7 +70,6 @@ h2{
     width: 80%;
     height: 4rem;
     resize: none;
-    
 }
 
 .submitButton{

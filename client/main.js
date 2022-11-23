@@ -182,7 +182,6 @@ function refreshPageLoop(){
 
 function refreshPage(){
     addChats(url+"/chatrooms");
-    //connectJoinBtn();
 }
 
 document.getElementById("refresh-btn").addEventListener("click", (e) => {

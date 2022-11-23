@@ -43,24 +43,7 @@ export function addChats(url){
               userName = "Anon123";
           }
           let chatroomname = document.getElementById(`uniqueCode${addBtn.id}`).innerHTML;
-          //fetch starts below
-          /*let data = {
-              name: chatroomname,
-              id: roomCode,
-              userName: userName  
-          } //not sure how the user's name will be handled but it will send data in this format for now
-          //header will have the standard UTF-8 as a placeholder until api is done and we know exactly what we'll need
-          let request = new Request(url+"/chatroom", {
-              method: 'POST',
-              body: JSON.stringify(data),
-              headers: new Headers({
-                  'Content-Type': 'application/json; charset=UTF-8'
-              })
-          });
-
-          fetch(request).then((Response) => {
-              console.log(Response);
-          });*/
+          
           console.log("s");
           window.location.assign(userURL+"id="+roomCode+":name="+userName+":roomname="+chatroomname);
           //fetch ends here

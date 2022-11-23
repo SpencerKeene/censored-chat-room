@@ -19,16 +19,68 @@ socket.onopen = function(e){
     console.log("connected");
     let data = {
         user : username,
-        message : "hello world"
+        message : "Has Connected"
     }
     socket.send(JSON.stringify(data));
-    
-}
+    var newMsg = document.createDocumentFragment();
+    let divBody = document.createElement('div');
+    divBody.className = "messages";
+    let msgBody = document.createElement('p');
+    msgBody.className = "msgText";
+    msgBody.innerText = `You: Connected`;
+    divBody.appendChild(msgBody);
+    newMsg.appendChild(divBody);
+    document.getElementById("chatBox").append(newMsg);
+    //
+}//<div class="messages"></div>
+
 socket.onmessage = (event) =>{
-    console.log(event.data);
+    //data is filtered as [#][1]
+    let data = event.data.substring(2, event.data.length-2).split(",");
+    data[0] = data[0].replaceAll('"', '');
+    data[0] = data[0].split(":");
+    data[1] = data[1].replaceAll('"', '');
+    data[1] = data[1].split(":");
+    //create div
+    var newMsg = document.createDocumentFragment();
+    let divBody = document.createElement('div');
+    divBody.className = "messages";
+    //creat message
+    let msgBody = document.createElement('p');
+    msgBody.className = "msgText";
+    msgBody.innerText = `${data[0][1]}: ${data[1][1]}`;
+
+    divBody.appendChild(msgBody);
+    newMsg.appendChild(divBody);
+    document.getElementById("chatBox").append(newMsg);
+    console.log(data[1][1]);
 }
+
 document.getElementById("send-button").addEventListener("click", (e) =>{
     //alert("button pressed");
     let userMsg = document.getElementById("textbox").value;
-    console.log(userMsg);
+    //console.log(userMsg);
+    if(userMsg == ""){
+        //do nothing
+    }
+    //create div
+    else{
+        var newMsg = document.createDocumentFragment();
+        let divBody = document.createElement('div');
+        divBody.className = "messages";
+        //creat message
+        let msgBody = document.createElement('p');
+        msgBody.className = "msgText";
+        msgBody.innerText = `You: ${userMsg}`;
+
+        divBody.appendChild(msgBody);
+        newMsg.appendChild(divBody);
+        document.getElementById("chatBox").append(newMsg);
+        let data = {
+            user : username,
+            message : userMsg
+        }
+        document.getElementById("textbox").value = "";
+        socket.send(JSON.stringify(data));
+    }
 });
