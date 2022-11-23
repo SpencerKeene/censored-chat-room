@@ -21,10 +21,13 @@ exports.create_chatroom = (req, res, next) => {
     
     chatrooms.set(id, newRoom)
 
-    res.status(200).json({
-        message: 'Chat room created successfully',
-        chatroom: newRoom.toResponseObject()
-    })
+    // wait 5 seconds before sending response to ensure the websocket has enough time to start up
+    setTimeout(() => {
+        res.status(200).json({
+            message: 'Chat room created successfully',
+            chatroom: newRoom.toResponseObject()
+        })
+    }, 5000)
 }
 
 exports.get_all_chatrooms = (req, res, next) => {
