@@ -102,23 +102,20 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
         userName = "Anon123";
     }
     //fetch starts below
-    let data = {
+    /*let data = {
         id: privateCode,
         userName: userName
-    } 
+    } */
 
-    let request = new Request(url+`/chatrooms`, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: new Headers({
-            'Content-Type': 'application/json; charset=UTF-8'
-        })
+    let request = new Request(url+`/chatrooms/${privateCode}`, {
+        method: 'GET'        
     });
     
     fetch(request)
             .then(Response => Response.json())
             .then(json =>{
-                window.location.assign(userURL+"id="+json.chatroom.id+":name="+userName+":roomname="+json.chatroom.name);
+                console.log(json);
+                //window.location.assign(userURL+"id="+json.chatroom.id+":name="+userName+":roomname="+json.chatroom.name);
                 
             });
             //alert("s");

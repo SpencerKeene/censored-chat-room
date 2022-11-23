@@ -11,8 +11,8 @@ var chatname = urlConstants[2].substring(urlConstants[2].indexOf("=")+1, urlCons
 console.log(chatname);
 document.getElementById("chatroom-id").innerHTML = `
     Code: ${id}
-`;
-let socket = new WebSocket(`ws://localhost:3000/chatrooms/${id}`);
+`;///chatrooms/${id}
+let socket = new WebSocket(`ws://localhost:8000`);
 //socket.OPEN;
 socket.onopen = function(e){
     console.log("connected");
@@ -21,11 +21,10 @@ socket.onopen = function(e){
         message : "hello world"
     }
     socket.send(JSON.stringify(data));
-    console.log(s);
+    
 }
-//socket.send("send");
 socket.onmessage = (event) =>{
-    console.log(event.data + "s");
+    console.log(event.data);
 }
 document.getElementById("send-button").addEventListener("click", (e) =>{
     //alert("button pressed");
