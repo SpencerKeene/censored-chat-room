@@ -37,6 +37,21 @@ exports.get_all_chatrooms = (req, res, next) => {
     })
 }
 
+exports.get_one_chatroom = (req, res, next) => {
+    const chatroomId = parseInt(req.params.chatroomId)
+    const chatroom = chatrooms.get(chatroomId)
+
+    if (!chatroom) return res.status(404).json({
+        error: {
+            message: `Error: Could not find chatroom with id ${chatroomId}`
+        }
+    })
+
+    res.status(200).json({
+        chatroom: chatroom.toResponseObject()
+    })
+}
+
 exports.join_chatroom = (req, socket, head) => {
     const urlPrefix = "/chatrooms/"
 
