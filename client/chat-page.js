@@ -1,3 +1,4 @@
+
 const urlConstants = window.location.search.replace("?", "").split(":");
 var id = urlConstants[0].substring(urlConstants[0].indexOf("=")+1, urlConstants[0].length);;
 console.log(id);
@@ -11,8 +12,8 @@ var chatname = urlConstants[2].substring(urlConstants[2].indexOf("=")+1, urlCons
 console.log(chatname);
 document.getElementById("chatroom-id").innerHTML = `
     Code: ${id}
-`;///chatrooms/${id}
-let socket = new WebSocket(`ws://localhost:8000`);
+`;//
+let socket = new WebSocket(`ws://localhost:3000/chatrooms/${id}`);
 //socket.OPEN;
 socket.onopen = function(e){
     console.log("connected");
