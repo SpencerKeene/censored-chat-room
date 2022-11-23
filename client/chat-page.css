@@ -23,7 +23,7 @@ body{
     min-height: 100vh;
 }
 
-form{
+#form{
     height: 30rem;
     width: 40rem;
 }
@@ -51,6 +51,7 @@ h2{
     width: 80%;
     height: 4rem;
     resize: none;
+    
 }
 
 .submitButton{

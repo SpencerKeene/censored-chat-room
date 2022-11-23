@@ -10,16 +10,15 @@
 
 <body>
   <div class="mainContainer">
-<!-- TODO: cjange text area to DIV  -->
-    <form>
+    <div id="form">
       <div class="chatWindow"></div>
       <div class="input">
-        <textarea class="message"></textarea> 
-        <input class="submitButton" type="submit" value="Submit">
+        <textarea class="message" id="textbox" placeholder="Write message here"></textarea> 
+        <Button class="submitButton" id="send-button" value="Send">Send</Button>
       </div>
-      <h2>Chat ID: 245236265</h2>
-    </form>
-
+      <h2 id="chatroom-id"></h2>
+    </div>
+    <script type="module" language="javascript" src="chat-page.js"></script>
   </div>
 </body>
 
