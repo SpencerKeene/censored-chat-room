@@ -1,7 +1,7 @@
 import { addChats } from './publicChats.js'
 //api url
-const url = "http://localhost:3000";
-const userURL = "http://127.0.0.1:5173/chat-page.html?";
+const url = "http://3.19.234.152";
+const userURL = "http://3.19.234.152/chat?";
 //top part/ first part of the page
 document.querySelector("#username").innerHTML = `
       <div>

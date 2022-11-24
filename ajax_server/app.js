@@ -20,8 +20,11 @@ app.use((req, res, next) => {
 
 // Routes to handle requests
 const chatroomRoutes = require('./api/routes/chatrooms')
+const clientRoutes = require('./api/routes/client')
 
 app.use('/chatrooms', chatroomRoutes)
+
+app.use('/', clientRoutes)
 
 // Error handling
 app.use((error, req, res, next) => {
