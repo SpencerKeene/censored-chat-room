@@ -25,7 +25,7 @@ const server = http.createServer(app)
 
 const fs = require('fs');
 const blacklist = fs.readFileSync('blacklist.txt').toString().split("\r\n");
-const blacklistRegex = new RegExp(blacklist.join('|'), 'gi')
+const blacklistRegex = new RegExp(`\\b(${blacklist.join('|')})\\b`, 'gi')
 
 const wsServer = new ws.Server({ noServer: true })
 wsServer.on('connection', socket => {
