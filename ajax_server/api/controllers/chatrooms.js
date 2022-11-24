@@ -63,11 +63,8 @@ exports.join_chatroom = (req, socket, head) => {
     const chatroomId = parseInt(req.url.slice(urlPrefix.length))
 
     if (!chatrooms.has(chatroomId)){
-        return res.status(404).json({
-            "error": {
-                "message": "chatroom not found!"
-            }
-        })
+        socket.disconnect()
+        return 
     }
     
     console.log(`connecting to room ${chatroomId}`)
