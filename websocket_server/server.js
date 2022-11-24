@@ -23,10 +23,9 @@ if (!port) throw Error('Port number must be provided')
 
 const server = http.createServer(app)
 
-var fromSelf = false
-
 const fs = require('fs');
-var array = fs.readFileSync('blacklist.txt').toString().split("\r\n");
+const blacklist = fs.readFileSync('blacklist.txt').toString().split("\r\n");
+const blacklistRegex = new RegExp(blacklist.join('|'), 'gi')
 
 const wsServer = new ws.Server({ noServer: true })
 wsServer.on('connection', socket => {
@@ -37,7 +36,14 @@ wsServer.on('connection', socket => {
   
   socket.on('message', message =>
     wsServer.clients.forEach(function each(client) {
-        client.send(JSON.stringify({...JSON.parse(message), fromSelf: client == socket}), {binary: false})
+        const newMessage = {
+            ...JSON.parse(message),
+            fromSelf: client == socket
+        }
+
+        newMessage.message = newMessage.message.replace(blacklistRegex, "*****")
+
+        client.send(JSON.stringify(newMessage), {binary: false})
     }))
 })
 
