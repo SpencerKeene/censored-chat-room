@@ -3,6 +3,7 @@ const http = require('http')
 const app = express()
 const ws = require('ws')
 
+
 function getArgs() {
     const args = process.argv.slice(2);
     let params = {};
@@ -22,6 +23,10 @@ if (!port) throw Error('Port number must be provided')
 
 const server = http.createServer(app)
 
+var fromSelf = false
+
+const fs = require('fs');
+var array = fs.readFileSync('blacklist.txt').toString().split("\r\n");
 
 const wsServer = new ws.Server({ noServer: true })
 wsServer.on('connection', socket => {
@@ -32,9 +37,7 @@ wsServer.on('connection', socket => {
   
   socket.on('message', message =>
     wsServer.clients.forEach(function each(client) {
-        if(client != socket){
-            client.send(message, {binary: false})
-        } 
+        client.send(JSON.stringify({...JSON.parse(message), fromSelf: client == socket}), {binary: false})
     }))
 })
 
@@ -46,3 +49,6 @@ server.on('upgrade', (request, socket, head) => {
         wsServer.emit('connection', socket, request)
     })
 })
+
+
+
