@@ -4,59 +4,16 @@ const url = "http://localhost:3000";
 const userURL = "http://127.0.0.1:5173/chat-page.html?";
 //top part/ first part of the page
 document.querySelector("#username").innerHTML = `
-      <div>
-          <h1>Name</h1> 
-      </div>
       <div class="input-name">  
-          <input type="text" id="UName" name="Chatname" placeholder="Anon123">
+          <input type="text" id="UName" name="Chatname" placeholder="Enter name">
       </div>
 `;
 
 addChats(url+"/chatrooms");
 
-//left in for now
-/*const buttons = document.getElementsByName("join-public-chat");
-console.log(buttons);
-
-function connectJoinBtn(){
-    for(let button of buttons){
-        button.addEventListener("click", (e) => {
-            //gets the name displayed
-            roomCode = document.getElementById(`uniqueCode${button.id}`).innerText;
-            userName = document.getElementById("UName").value;
-            if(userName == ""){
-                userName = "Anon123";
-            }
-            chatroomname = document.getElementById(`uniqueCode${button.id}`).innerHTML;
-            //fetch starts below
-            let data = {
-                name: chatroomname,
-                id: roomCode,
-                userName: userName  
-            } //not sure how the user's name will be handled but it will send data in this format for now
-            //header will have the standard UTF-8 as a placeholder until api is done and we know exactly what we'll need
-            let request = new Request(url+"/chatroom", {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                    'Content-Type': 'application/json; charset=UTF-8'
-                })
-            });
-
-            fetch(request).then((Response) => {
-                console.log(Response);
-            });
-            console.log("s");
-            window.location.assign(userURL+"id="+roomCode+":name="+userName+":roomname="+chatroomname);
-            //fetch ends here
-        });
-    }
-}
-connectJoinBtn();
-*/
-
 document.getElementById("refresh-tab").innerHTML = `
     <button id="refresh-btn"></button>
+    <h2 id="public-chat-title">Public Chat Room(s)</h2>
 `;
 
 //third part of the page / bottom of the page (second last)
@@ -64,27 +21,32 @@ document.querySelector("#input-buttons").innerHTML = `
     <div ="create">
         <button id="create-chat-room">Create Chat Room</button>
         <input type="text" id="chatroom-name" name="chatname" placeholder="Chatroom name">
-    </div>
-    <div id="room-code-title">
-        <button id="join-private-room">Join Private Room</button>
-    </div>
-    <div id="room-code-title">
-        <div>
-            <h5>Enter Private Room Code</h5>
+        <div id="room-code-title">
+            <button id="join-private-room">Join Private Room</button>
         </div>
-        <div>
-            <input type="text" id="private-code" name="code" placeholder="#######">
+        <div id="room-code-title">
+            <div>
+                <h5>Enter Private Room Code</h5>
+            </div>
+            <div>
+                <input type="text" id="private-code" name="code" placeholder="#######">
+            </div>
         </div>
     </div>
+    
     
 `;
 
 //radio buttons third segment
 document.querySelector("#radio-buttons").innerHTML = `
+    <div>
         <input type="radio" id="public" name="rButton" value="Public">
         <label for="public">Public</label>
+    </div>
+    <div>
         <input type="radio" id="private" name="rButton" value="Private">
         <label for="private">Private</label>
+    </div>
 `;
 
 var userName;
@@ -101,24 +63,28 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
     if(userName == ""){
         userName = "Anon123";
     }
-    //fetch starts below
-    /*let data = {
-        id: privateCode,
-        userName: userName
-    } */
 
     let request = new Request(url+`/chatrooms/${privateCode}`, {
         method: 'GET'        
     });
     
     fetch(request)
-            .then(Response => Response.json())
+            .then(Response => {
+                if(!Response.ok){
+                    throw(Response.status);
+                }
+                else{
+                    
+                    return Response.json();
+                }
+            })
             .then(json =>{
                 console.log(json);
-                //window.location.assign(userURL+"id="+json.chatroom.id+":name="+userName+":roomname="+json.chatroom.name);
+                window.location.assign(userURL+"id="+json.chatroom.id+":name="+userName+":roomname="+json.chatroom.name);
                 
+            }).catch(error =>{
+                alert(`Error ${error}`);
             });
-            //alert("s");
     
 });
 
