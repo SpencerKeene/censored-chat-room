@@ -162,6 +162,8 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
             })
         });
         
+        //TODO write stuff for loading here
+        
         fetch(request)
             .then(Response => Response.json())
             .then(json =>{
