@@ -1,4 +1,4 @@
-import { addChats } from './publicChats.js'
+import { addChats } from "./publicChats.js";
 //api url
 const url = "http://localhost:3000";
 const userURL = "http://127.0.0.1:5173/chat-page.html?";
@@ -9,7 +9,7 @@ document.querySelector("#username").innerHTML = `
       </div>
 `;
 
-addChats(url+"/chatrooms");
+addChats(url + "/chatrooms");
 
 document.getElementById("refresh-tab").innerHTML = `
     <button id="refresh-btn"></button>
@@ -62,12 +62,7 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
     }
     if(userName == ""){
         userName = "Anon123";
-    }
-
-    let request = new Request(url+`/chatrooms/${privateCode}`, {
-        method: 'GET'        
-    });
-    
+    } 
     fetch(request)
             .then(Response => {
                 if(!Response.ok){
@@ -85,7 +80,6 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
             }).catch(error =>{
                 alert(`Error ${error}`);
             });
-    
 });
 
 var roomType = "";
@@ -93,65 +87,85 @@ var roomType = "";
 const radioButtons = document.querySelectorAll('input[name="rButton"]');
 //create a chatroom
 document.getElementById("create-chat-room").addEventListener("click", (e) => {
-    let roomname = document.getElementById("chatroom-name").value;
-    for(const radioButton of radioButtons){
-        if(radioButton.checked){
-            roomType = radioButton.value;
-            radioButton.checked = false;
-            break;
-        }
+  let roomname = document.getElementById("chatroom-name").value;
+  for (const radioButton of radioButtons) {
+    if (radioButton.checked) {
+      roomType = radioButton.value;
+      radioButton.checked = false;
+      break;
     }
-    if(roomType == ""){
-        alert("Please select a room type.");
+  }
+  if (roomType == "") {
+    alert("Please select a room type.");
+  } else if (roomname == "") {
+    alert("Please enter a name for your chat room");
+  } else {
+    userName = document.getElementById("UName").value;
+    if (userName == "") {
+      userName = "Anon123";
     }
-    else if(roomname == ""){
-        alert("Please enter a name for your chat room");
-    }
-    
-    else{
-        userName = document.getElementById("UName").value;
-        if(userName == ""){
-            userName = "Anon123";
-        }
-        //fetch starts below
+    //fetch starts below
 
-        let data = {
-            name: roomname,
-            privacy: roomType
-        } 
+    let data = {
+      name: roomname,
+      privacy: roomType,
+    };
 
-        let request = new Request(url+"/chatrooms", {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: new Headers({
-                'Content-Type': 'application/json; charset=UTF-8'
-            })
-        });
-        
-        fetch(request)
-            .then(Response => Response.json())
-            .then(json =>{
-                window.location.assign(userURL+"id="+json.chatroom.id+":name="+userName+":roomname="+json.chatroom.name);
-                
-            });
-        roomType = "";
-        roomname = "";
-        //fetch ends here
-    }
+    let request = new Request(url + "/chatrooms", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: new Headers({
+        "Content-Type": "application/json; charset=UTF-8",
+      }),
+    });
+
+    //TODO write stuff for loading here
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      `<div id="blurryBack">
+        <div id="greyCard">
+          <div class="loader"></div>
+          <h2 id="loading">Loading. . .</h2>
+        </div>
+      </div>`
+    );
+
+    fetch(request)
+      .then((Response) => Response.json())
+      .then((json) => {
+        window.location.assign(
+          userURL +
+            "id=" +
+            json.chatroom.id +
+            ":name=" +
+            userName +
+            ":roomname=" +
+            json.chatroom.name
+        );
+      });
+    roomType = "";
+    roomname = "";
+    //fetch ends here
+  }
+
+  setTimeout(() => {
+    const elem = document.getElementById("blurryBack");
+    elem.parentNode.removeChild(elem);
+  }, 6000);
 });
 
 var refresh = setTimeout(refreshPageLoop, 5000);
-function refreshPageLoop(){
-    refreshPage();
-    refresh = setTimeout(refreshPageLoop, 5000);
+function refreshPageLoop() {
+  refreshPage();
+  refresh = setTimeout(refreshPageLoop, 5000);
 }
 
-function refreshPage(){
-    addChats(url+"/chatrooms");
+function refreshPage() {
+  addChats(url + "/chatrooms");
 }
 
 document.getElementById("refresh-btn").addEventListener("click", (e) => {
-    document.getElementById("refresh-btn").disabled = true;
-    refreshPage();
-    document.getElementById("refresh-btn").disabled = false;
+  document.getElementById("refresh-btn").disabled = true;
+  refreshPage();
+  document.getElementById("refresh-btn").disabled = false;
 });
