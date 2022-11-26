@@ -2,8 +2,6 @@ const httpProxy = require('http-proxy')
 const { exec } = require('child_process')
 const portfinder = require('portfinder')
 
-const serverIP = 'localhost'
-
 const chatroomMap = new Map()
 exports.chatrooms = chatroomMap
 
@@ -62,7 +60,7 @@ class Chatroom {
 
             this.proxy = httpProxy.createProxyServer({
                 target: {
-                    host: serverIP,
+                    host: 'localhost',
                     port: port
                 }
             })
