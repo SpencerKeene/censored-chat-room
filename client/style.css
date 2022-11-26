@@ -216,3 +216,49 @@ body {
 #create{
   display: contents;
 }
+
+
+#blurryBack{
+  
+  background-color:rgba(48, 44, 44, 0.932);
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index:1000;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+#greyCard{
+  background-color: rgb(92, 92, 92); 
+  justify-content: space-between;
+  padding: 5rem 10rem 3.5rem 10rem;
+  border-radius: 25px;
+  
+}
+
+.loader {
+  border: 16px solid #9292926c; /* Light grey */
+  border-top: 16px solid #414141; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  
+ 
+}
+
+#loading{
+  margin-top: 1rem;
+  text-align: center;
+  color: rgba(48, 44, 44, 0.884);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
