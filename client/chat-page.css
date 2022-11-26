@@ -15,7 +15,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-
 body{
     display: flex;
     align-items: center;
@@ -29,7 +28,6 @@ body{
 }
 
 h2{
-    float:right;
     font-size: 20px;
     margin-top: 0.75rem;
 }
@@ -37,32 +35,84 @@ h2{
 .mainContainer{
     display: flex;
     background-color: aliceblue;
-    border: 1px solid #000000;
 }
 
 
 .chatWindow{
+    border-radius: 18px;
+    border-radius: 20px;
     overflow-y: auto;
     margin:  auto;
-    background-color: aliceblue;
+    background-color: rgb(198, 199, 200);
     width: 100%;
     height: 100%;
 }
 
 .messages{
-    width: inherit;
+    float: right;
+    width: 400px;
     min-height: 40px;
-    background-color: transparent;
-    
-
+    background-color: #3a2929;
+    margin: 0px 10px 5px 20px;
+    padding: 5px 2px 0px 10px;
+    padding-top: 12px;
+    border-radius: 18px;
 }
+
+.messagesR{
+    float: left;
+    width: 400px;
+    min-height: 40px;
+    background-color: #3a2929;
+    margin: 0px 10px 5px 20px;
+    padding: 5px 2px 0px 10px;
+    padding-top: 12px;
+    border-radius: 18px;
+}
+
 .msgText{
     background-color: transparent;
     padding: 1%;
-    float: left;
     overflow-wrap: break-word;
     letter-spacing: auto;
-    width: 95%;
+    width: 400px;
+    color: #d7c7c7;
+    letter-spacing: 1px;
+    line-height: 20px;
+}
+
+.userInfoBox{
+    float: right;
+    margin: 10px 120px 5px 30px;
+    background-color: transparent;
+}
+
+.userInfo{
+    padding-top: 10x;
+    background-color: transparent;
+}
+
+.userInfoBoxR{
+    float: left;
+    margin: 10px 10px 5px 30px;
+    background-color: transparent;
+}
+
+.userInfoR{
+    padding-top: 10x;
+    background-color: transparent;
+}
+
+.chatBoxSelf{
+    width: 70%;
+    float:right;
+    background-color: transparent;
+}
+
+.chatBoxSelfReceived{
+    width: 70%;
+    float:left;
+    background-color: transparent;
 }
 
 .message{
@@ -70,13 +120,15 @@ h2{
     width: 80%;
     height: 4rem;
     resize: none;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .submitButton{
-    background-color: aliceblue;
-    width: 5rem;
+    background-color: rgb(89, 166, 234);
+    width: 6.5rem;
     height: 2rem;
-    align-self:flex-end;
+    border-radius: 10px;
 }
 
 .input{
@@ -94,3 +146,23 @@ h2{
     background-color: rgb(40, 97, 78);
 }
 
+#chatroom-id{
+    background-color: transparent;
+}
+
+#codeBox{
+    margin-top: 5px;
+    align-content: center;
+    padding: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #a29c9c;
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+#btn-code-box{
+    padding: 10px;
+    padding-top: 0;
+}
