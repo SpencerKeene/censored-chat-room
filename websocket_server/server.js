@@ -46,9 +46,12 @@ wsServer.on('connection', socket => {
     }))
 
     socket.on('close', () => {
-        if (wsServer.clients.size === 0) {
-            process.exit()
-        }
+        // if no clients are connected, check again in 3 seconds then close the chatroom
+        if (wsServer.clients.size === 0) setTimeout(() => {
+            if (wsServer.clients.size === 0) {
+                process.exit()
+            }
+        }, 3000)
     })
 })
 
@@ -61,6 +64,3 @@ server.on('upgrade', (request, socket, head) => {
     })
     
 })
-
-
-
