@@ -1,25 +1,9 @@
 const Chatroom = require('../models/Chatroom')
-
-const chatrooms = new Map()
-
-const randomId = () => {
-    const maxId = 999999
-    const minId = 111111
-
-    const range = maxId - minId + 1
-    return Math.floor(Math.random() * range) + minId
-}
+const chatroomMap = Chatroom.chatroomMap
 
 exports.create_chatroom = (req, res, next) => {
-    let id = randomId()
-    while (chatrooms.has(id)) {
-        id = randomId()
-    }
-
     const roomDetails = req.body
-    const newRoom = new Chatroom(id, roomDetails.name, roomDetails.privacy)
-    
-    chatrooms.set(id, newRoom)
+    const newRoom = new Chatroom(roomDetails.name, roomDetails.privacy)
 
     // wait 5 seconds before sending response to ensure the websocket has enough time to start up
     setTimeout(() => {
@@ -31,7 +15,7 @@ exports.create_chatroom = (req, res, next) => {
 }
 
 exports.get_all_chatrooms = (req, res, next) => {
-    const chatroomsArray = Array.from(chatrooms.values())
+    const chatroomsArray = Array.from(chatroomMap.values())
     const publicChatrooms = chatroomsArray.filter(chatroom => chatroom.isPublic())
     const responseChatrooms = publicChatrooms.map(chatroom => chatroom.toResponseObject())
     res.status(200).json({
@@ -42,7 +26,7 @@ exports.get_all_chatrooms = (req, res, next) => {
 
 exports.get_one_chatroom = (req, res, next) => {
     const chatroomId = parseInt(req.params.chatroomId)
-    const chatroom = chatrooms.get(chatroomId)
+    const chatroom = chatroomMap.get(chatroomId)
 
     if (!chatroom) return res.status(404).json({
         error: {
@@ -55,23 +39,20 @@ exports.get_one_chatroom = (req, res, next) => {
     })
 }
 
-exports.join_chatroom = (req, socket, head) => {
+exports.join_chatroom = async (req, socket, head) => {
     const urlPrefix = "/chatrooms/"
 
-    if (!req.url.startsWith(urlPrefix)) return
+    if (!req.url.startsWith(urlPrefix)) {
+        throw Error('Invalid url')
+    }
 
     const chatroomId = parseInt(req.url.slice(urlPrefix.length))
+    const chatroom = chatroomMap.get(chatroomId)
 
-    if (!chatrooms.has(chatroomId)){
-        return res.status(404).json({
-            "error": {
-                "message": "chatroom not found!"
-            }
-        })
+    if (!await chatroom?.isOpen()) {
+        throw Error('Could not connect to chatroom because the chatroom either does not exist or is no longer open')
     }
     
     console.log(`connecting to room ${chatroomId}`)
-
-    const chatroom = chatrooms.get(chatroomId)
     chatroom.forwardUpgrade(req, socket, head)
 }
