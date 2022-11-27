@@ -42,10 +42,12 @@
 
 .public-chat-name{
   float: left;
-  width: 80px;
-  height: 30px;
-  padding-top: 1.2%;
+  width: 32%;
+  height: 20px;
+  padding-top: 0.7%;
   font-size: 100%;
+  text-align: left;
+  font-weight: bold;
 }
 
 .chat-display-template:hover{
@@ -99,7 +101,6 @@ body {
   padding: 0px;
   padding-left: 0;
   place-items: center;
-  
 }
 
 #create-chat-room{
@@ -167,7 +168,6 @@ body {
 
 #input-buttons{
   align-items: center;
-  
 }
 
 #radio-buttons{

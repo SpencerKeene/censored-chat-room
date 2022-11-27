@@ -75,6 +75,8 @@ socket.onmessage = (event) =>{
         newMsg.appendChild(box);
         document.getElementById("chatBox").append(newMsg);
     }
+    const chatBox = document.getElementById("chatBox");
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 document.getElementById("send-button").addEventListener("click", (e) =>{

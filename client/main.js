@@ -63,6 +63,9 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
     if(userName == ""){
         userName = "Anon123";
     } 
+    let request = new Request(url+`/chatrooms/${privateCode}`, {
+      method: 'GET'        
+    });
     fetch(request)
             .then(Response => {
                 if(!Response.ok){
@@ -99,6 +102,8 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
     alert("Please select a room type.");
   } else if (roomname == "") {
     alert("Please enter a name for your chat room");
+  } else if(roomname.length > 32){
+    alert("Chatroom name cannot exceed 32 characters!");
   } else {
     userName = document.getElementById("UName").value;
     if (userName == "") {

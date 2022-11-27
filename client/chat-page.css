@@ -8,76 +8,64 @@
     font-size: 20px;
     line-height: 14px;
     font-weight: 300;
-  
+
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-body{
+body {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 }
 
-#form{
+#form {
     height: 30rem;
     width: 40rem;
 }
 
-h2{
+h2 {
     font-size: 20px;
     margin-top: 0.75rem;
 }
 
-.mainContainer{
+.mainContainer {
     display: flex;
     background-color: aliceblue;
     flex-direction: column;
 }
 
-
-<<<<<<< Updated upstream
-.chatWindow{
-    border-radius: 18px;
-    border-radius: 20px;
-=======
 .chatWindow {
-   
     border-radius: 0px 20px 20px 20px;
->>>>>>> Stashed changes
     overflow-y: auto;
-    margin:  auto;
+    margin: auto;
     background-color: rgb(198, 199, 200);
     width: 100%;
     height: 100%;
 }
 
-.messages{
+.messages {
     float: right;
     width: 400px;
-    min-height: 40px;
     background-color: #3a2929;
     margin: 0px 10px 5px 20px;
-    padding: 5px 2px 0px 10px;
-    padding-top: 12px;
+    padding: 10px;
     border-radius: 18px;
 }
 
-.messagesR{
+.messagesR {
     float: left;
     width: 400px;
-    min-height: 40px;
     background-color: #3a2929;
     margin: 0px 10px 5px 20px;
-    padding: 5px 2px 0px 10px;
-    padding-top: 12px;
+    padding: 10px;
     border-radius: 18px;
 }
 
-.msgText{
+.msgText {
     background-color: transparent;
     padding: 1%;
     overflow-wrap: break-word;
@@ -85,85 +73,82 @@ h2{
     width: 400px;
     color: #d7c7c7;
     letter-spacing: 1px;
-    line-height: 20px;
+    line-height: 1.2;
 }
 
-.userInfoBox{
+.userInfoBox {
     float: right;
     margin: 10px 120px 5px 30px;
     background-color: transparent;
 }
 
-.userInfo{
+.userInfo {
     padding-top: 10x;
     background-color: transparent;
 }
 
-.userInfoBoxR{
+.userInfoBoxR {
     float: left;
     margin: 10px 10px 5px 30px;
     background-color: transparent;
 }
 
-.userInfoR{
+.userInfoR {
     padding-top: 10x;
     background-color: transparent;
 }
 
-.chatBoxSelf{
+.chatBoxSelf {
     width: 70%;
-    float:right;
+    float: right;
     background-color: transparent;
 }
 
-.chatBoxSelfReceived{
+.chatBoxSelfReceived {
     width: 70%;
-    float:left;
+    float: left;
     background-color: transparent;
 }
 
-.message{
+.message {
     background-color: aliceblue;
     width: 80%;
     height: 4rem;
     resize: none;
-    padding: 5px;
+    padding: 10px;
     border-radius: 10px;
+    line-height: 1.2;
 }
 
-.submitButton{
+.submitButton {
     background-color: rgb(89, 166, 234);
     width: 6.5rem;
     height: 2rem;
     border-radius: 10px;
 }
 
-.input{
+.input {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
     height: 8rem;
 }
 
-.submitButton:hover{
+.submitButton:hover {
     background-color: aquamarine;
 }
 
-.submitButton:active{
+.submitButton:active {
     background-color: rgb(40, 97, 78);
 }
 
-#chatroom-id{
+#chatroom-id {
     background-color: transparent;
 }
 
-<<<<<<< Updated upstream
-#codeBox{
-    margin-top: 5px;
-=======
+
 #codeBox {
     margin-top: 16px;
->>>>>>> Stashed changes
     align-content: center;
     padding: 2px;
     padding-right: 10px;
@@ -172,9 +157,10 @@ h2{
     width: 130px;
     height: 40px;
     border-radius: 10px;
+    scroll-behavior: smooth;
 }
 
-#btn-code-box{
+#btn-code-box {
     padding: 10px;
     padding-top: 0;
     
@@ -216,3 +202,4 @@ h2{
     display: inline-block;
     font-size: 16px;
 }
+
