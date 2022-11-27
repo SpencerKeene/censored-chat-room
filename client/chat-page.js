@@ -87,3 +87,5 @@ document.getElementById("send-button").addEventListener("click", (e) =>{
         socket.send(JSON.stringify(data));
     
 });
+
+document.getElementById("chatName").innerText = chatname;

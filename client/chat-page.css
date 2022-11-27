@@ -35,12 +35,19 @@ h2{
 .mainContainer{
     display: flex;
     background-color: aliceblue;
+    flex-direction: column;
 }
 
 
+<<<<<<< Updated upstream
 .chatWindow{
     border-radius: 18px;
     border-radius: 20px;
+=======
+.chatWindow {
+   
+    border-radius: 0px 20px 20px 20px;
+>>>>>>> Stashed changes
     overflow-y: auto;
     margin:  auto;
     background-color: rgb(198, 199, 200);
@@ -135,7 +142,7 @@ h2{
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
-    height: 4rem;
+    height: 8rem;
 }
 
 .submitButton:hover{
@@ -150,8 +157,13 @@ h2{
     background-color: transparent;
 }
 
+<<<<<<< Updated upstream
 #codeBox{
     margin-top: 5px;
+=======
+#codeBox {
+    margin-top: 16px;
+>>>>>>> Stashed changes
     align-content: center;
     padding: 2px;
     padding-right: 10px;
@@ -165,4 +177,42 @@ h2{
 #btn-code-box{
     padding: 10px;
     padding-top: 0;
+    
+}
+
+#chatName-leavebButton {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#chatNameBox {
+    background-color: rgb(198, 199, 200);
+    border-radius: 10px;
+    max-width: 90%;
+    border-radius: 10px 10px 0px 0px;
+    padding: 0 1rem 0 1rem;
+   
+}
+#chatNameBox > h2 {
+    background-color: rgb(198, 199, 200);
+    text-align: center;
+    margin-top: 1.1rem;
+    font-weight: bold;
+    color: rgba(48, 44, 44, 0.932);
+  }
+
+
+  
+#goBack {
+    background-color: #af271d;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
