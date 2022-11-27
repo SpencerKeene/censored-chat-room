@@ -3,7 +3,6 @@ const http = require('http')
 const app = express()
 const ws = require('ws')
 
-
 function getArgs() {
     const args = process.argv.slice(2);
     let params = {};
@@ -30,11 +29,11 @@ const blacklistRegex = new RegExp(`\\b(${blacklist.join('|')})\\b`, 'gi')
 const wsServer = new ws.Server({ noServer: true })
 wsServer.on('connection', socket => {
 
-  socket.on('message', message => 
-    console.log(JSON.parse(message.toString()))
+    socket.on('message', message => 
+        console.log(JSON.parse(message.toString()))
     )
-  
-  socket.on('message', message =>
+
+    socket.on('message', message =>
     wsServer.clients.forEach(function each(client) {
         const newMessage = {
             ...JSON.parse(message),
@@ -45,6 +44,15 @@ wsServer.on('connection', socket => {
 
         client.send(JSON.stringify(newMessage), {binary: false})
     }))
+
+    socket.on('close', () => {
+        // if no clients are connected, check again in 3 seconds then close the chatroom
+        if (wsServer.clients.size === 0) setTimeout(() => {
+            if (wsServer.clients.size === 0) {
+                process.exit()
+            }
+        }, 3000)
+    })
 })
 
 server.listen(port)
@@ -54,7 +62,5 @@ server.on('upgrade', (request, socket, head) => {
     wsServer.handleUpgrade(request, socket, head, socket => {
         wsServer.emit('connection', socket, request)
     })
+    
 })
-
-
-

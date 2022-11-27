@@ -9,21 +9,32 @@
 </head>
 
 <body>
+
+
   <div class="mainContainer">
+
+    <div id="chatName-leavebButton">
+      <div id="chatNameBox">
+        <h2 id="chatName"></h2>
+      </div>
+      <button id=goBack onclick="history.back()">Leave</button>
+    </div>
+
     <div id="form">
       <div class="chatWindow" id="chatBox"></div>
       <div class="input">
         <textarea class="message" id="textbox" placeholder="Write message here"></textarea>
         <div id="btn-code-box">
-            <Button class="submitButton" id="send-button" value="Send">Send</Button>
-           <div id="codeBox">
+          <Button class="submitButton" id="send-button" value="Send">Send</Button>
+          <div id="codeBox">
             <h2 id="chatroom-id"></h2>
           </div>
-        </div> 
+        </div>
       </div>
     </div>
     <script type="module" language="javascript" src="chat-page.js"></script>
   </div>
+
 </body>
 
 </html>

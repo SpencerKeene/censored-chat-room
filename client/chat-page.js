@@ -85,6 +85,8 @@ socket.onmessage = (event) =>{
         newMsg.appendChild(box);
         document.getElementById("chatBox").append(newMsg);
     }
+    const chatBox = document.getElementById("chatBox");
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 document.getElementById("send-button").addEventListener("click", (e) =>{
@@ -97,3 +99,5 @@ document.getElementById("send-button").addEventListener("click", (e) =>{
         socket.send(JSON.stringify(data));
     
 });
+
+document.getElementById("chatName").innerText = chatname;
