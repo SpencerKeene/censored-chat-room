@@ -166,3 +166,14 @@ h2{
     padding: 10px;
     padding-top: 0;
 }
+
+#error{
+    width: 100%;
+    padding: 10px;
+
+}
+
+#error-text{
+    font-weight: bold;
+    font-size: 100%;
+}
