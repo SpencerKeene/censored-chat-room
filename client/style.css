@@ -7,7 +7,7 @@
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 
-  background-color: #dfc9c9;
+  background-color: #b1b1b1;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .join-public-chat:active{
-  background-color: #f5ededf6;
+  background-color: #D9D9D9;
   width: 78px;
   height: 28px;
 }
@@ -63,20 +63,9 @@
   border: 3px solid #000000;
 }
 
-#box{
-  margin:  auto;
-  text-align: center;
-}
 
-#public-chat{
-  overflow-y: auto;
-  margin: auto;
-  padding: 2px 4px 4px 2px;
-  width: 50.2%;
-  min-height: 300px;
-  max-height: 300px;
-  background-color: #ffffff6e;
-}
+
+
 
 #UName{
   width: 200px;
@@ -125,6 +114,8 @@ body {
   background-color: #ffffff;
 }
 
+
+
 #join-private-room{
   width: 150px;
   height: 50px;
@@ -164,6 +155,7 @@ body {
   height: 30px;
   text-align: center;
   border-radius: 10px;
+
 }
 
 #input-buttons{
@@ -175,39 +167,65 @@ body {
   width: 50%;
 }
 
-#refresh-tab{
-  background-color: #e8d5d5;
+#box{
   margin:  auto;
-  text-align: center;
   width: 50%;
-  padding: 5px;
-  height: 38px;
+  text-align: center;
 }
 
+#public-chat{
+  overflow-y: auto;
+  margin: auto;
+  padding: 2px 4px 4px 2px;
+  min-height: 300px;
+  max-height: 300px;
+  background-color: #CCCCCC;
+  border-radius: 0px 0px 10px 10px;
+}
+
+
+#refr-tab-wrapper{
+  background-color: #CCCCCC;
+  display:flex;
+  border-radius: 10px 10px 0px 0px ;
+  height: 65px;
+}
+
+#refresh-tab{
+  justify-content: center;
+  align-content: center;
+  background-color: #D9D9D9;
+  margin:  auto;
+  text-align: center;
+  width: 96%;
+  padding: 5px;
+  height: 38px;
+  border-radius: 10px;
+}
+
+
 #refresh-btn{
-  background-color: #eae0e0;
+  background-color: #CCCCCC;
   float: left;
   background-image: url("/reload.png");
-  background-size: 40px 40px;
-  width: 40.3px;
-  height: 40.3px;
-  border-radius: 8px;
+  background-size: 37px 37px;
+  width: 37px;
+  height: 37px;
+  border-radius: 10px;
 }
 
 #refresh-btn:hover{
   opacity: 0.8;
   background-color: rgba(237, 239, 219, 0.447);
-  background-size: 39px 39px;
-  width: 39px;
-  height: 39px;
+  background-size: 37px 37px;
+
 }
 
 #refresh-btn:active{
   opacity: 0.9;
   background-color: rgba(187, 191, 154, 0.447);
-  background-size: 41px 41px;
-  width: 41px;
-  height: 41px;
+  background-size: 37px 37px;
+ 
 }
 
 #chatroom-name{
