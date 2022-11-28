@@ -3,13 +3,13 @@ const urlConstants = window.location.search.replace("?", "").split(":");
 var id = urlConstants[0].substring(urlConstants[0].indexOf("=")+1, urlConstants[0].length);;
 
 var username = urlConstants[1].substring(urlConstants[1].indexOf("=")+1, urlConstants[1].length);
-
-var chatname = urlConstants[2].substring(urlConstants[2].indexOf("=")+1, urlConstants[2].length);;
+username = username.replaceAll("%20", " ");
+var chatname = urlConstants[2].substring(urlConstants[2].indexOf("=")+1, urlConstants[2].length);
+chatname = chatname.replaceAll("%20", " ");
 document.getElementById("chatroom-id").innerHTML = `
     Code: ${id}
 `;//
 let socket = new WebSocket(`ws://localhost:3000/chatrooms/${id}`);
-//socket.OPEN;
 socket.onopen = function(e){
     console.log("connected");
     let data = {
@@ -18,8 +18,18 @@ socket.onopen = function(e){
     }
     socket.send(JSON.stringify(data));
     
-}//<div class="messages"></div>
-
+}
+socket.onerror=function(event){
+    let errorHTML = document.createDocumentFragment();
+    let box = document.createElement("div");
+    let errorText = document.createElement("h1");
+    errorText.id = "error-text";
+    errorText.innerText = `An error has occured during connection please refresh the page to try again!`;
+    box.id = "error";
+    box.appendChild(errorText);
+    errorHTML.appendChild(box);
+    document.getElementById("form").replaceChildren(errorHTML);
+}
 socket.onmessage = (event) =>{
     let data = JSON.parse(event.data);
     if(data.message == ""){
