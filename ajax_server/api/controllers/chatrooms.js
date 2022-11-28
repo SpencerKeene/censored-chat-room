@@ -43,19 +43,29 @@ exports.join_chatroom = async (req, socket, head) => {
     const urlPrefix = "/chatrooms/"
 
     if (!req.url.startsWith(urlPrefix)) {
-        console.log('Error: Invalid url for websocket connection')
-        return false
+        const error = new Error('Invalid url for websocket connection')
+        error.code = 400
+        console.log(`Error ${error.code}: ${error.message}`);
+        throw error
     }
 
     const chatroomId = parseInt(req.url.slice(urlPrefix.length))
     const chatroom = chatroomMap.get(chatroomId)
 
-    if (!await chatroom?.isOpen()) {
-        console.log('Error: Could not connect to chatroom because the chatroom either does not exist or is no longer open');
-        return false
+    if (!chatroom) {
+        const error = new Error(`Could not find chatroom with id ${chatroomId}`)
+        error.code = 404
+        console.log(`Error ${error.code}: ${error.message}`);
+        throw error
+    }
+
+    if (!await chatroom.isOpen()) {
+        const error = new Error('An error occured while connecting to chatroom, the websocket is not open for connection')
+        error.code = 500
+        console.log(`Error ${error.code}: ${error.message}`);
+        throw error
     }
     
     console.log(`connecting to room ${chatroomId}`)
     chatroom.forwardUpgrade(req, socket, head)
-    return true
 }
