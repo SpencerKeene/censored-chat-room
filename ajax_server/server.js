@@ -18,7 +18,11 @@ const wsServer = new ws.Server({
     noServer: true,
     verifyClient: async (info, cb) => {
         const {req, socket, head} = upgradeReq
-        if (!ChatroomController.join_chatroom(req, socket, head)) cb(false)
+        try {
+            await ChatroomController.join_chatroom(req, socket, head)
+        } catch (error) {
+            cb(false, error.code, error.message)
+        }            
     }
 })
 
