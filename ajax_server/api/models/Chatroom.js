@@ -56,7 +56,7 @@ class Chatroom {
             this.port = port
 
             // start child process running websocket
-            const child = exec(`cd ../websocket_server & npm start -- PORT=${port}`)
+            const child = exec(`cd ../websocket_server && npm start -- PORT=${port}`)
 
             this.proxy = httpProxy.createProxyServer({
                 target: {
