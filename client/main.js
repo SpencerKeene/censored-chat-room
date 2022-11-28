@@ -2,7 +2,6 @@ import { addChats } from "./publicChats.js";
 //api url
 const url = "http://localhost:3000";
 const userURL = "http://127.0.0.1:5173/chat-page.html?";
-//top part/ first part of the page
 document.querySelector("#username").innerHTML = `
       <div class="input-name">  
           <input type="text" id="UName" name="Chatname" placeholder="Enter name">
@@ -33,8 +32,6 @@ document.querySelector("#input-buttons").innerHTML = `
             </div>
         </div>
     </div>
-    
-    
 `;
 
 //radio buttons third segment
@@ -77,9 +74,7 @@ document.getElementById("join-private-room").addEventListener("click", (e) => {
                 }
             })
             .then(json =>{
-                console.log(json);
                 window.location.assign(userURL+"id="+json.chatroom.id+":name="+userName+":roomname="+json.chatroom.name);
-                
             }).catch(error =>{
                 alert(`Error ${error}`);
             });
@@ -110,7 +105,6 @@ document.getElementById("create-chat-room").addEventListener("click", (e) => {
       userName = "Anon123";
     }
     //fetch starts below
-
     let data = {
       name: roomname,
       privacy: roomType,

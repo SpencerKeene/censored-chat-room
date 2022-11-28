@@ -8,7 +8,7 @@ var chatname = urlConstants[2].substring(urlConstants[2].indexOf("=")+1, urlCons
 chatname = chatname.replaceAll("%20", " ");
 document.getElementById("chatroom-id").innerHTML = `
     Code: ${id}
-`;//
+`;
 let socket = new WebSocket(`ws://localhost:3000/chatrooms/${id}`);
 socket.onopen = function(e){
     console.log("connected");
@@ -28,7 +28,7 @@ socket.onerror=function(event){
     box.id = "error";
     box.appendChild(errorText);
     errorHTML.appendChild(box);
-    document.getElementById("form").replaceChildren(errorHTML);
+    document.getElementById("main").replaceChildren(errorHTML);
 }
 socket.onmessage = (event) =>{
     let data = JSON.parse(event.data);

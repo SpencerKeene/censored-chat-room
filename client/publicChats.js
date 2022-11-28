@@ -18,17 +18,11 @@ export function addChats(url){
         document.getElementById("public-chat").append(newChats);
     }
     else{
-      //var chats = document.getElementById("public-chat").children;
       var newChats = document.createDocumentFragment();
       for(let chat of json.chatrooms){ // let object in list of objects
-        // if(document.getElementById(chat.id) != null){
-        //   //do nothing
-        // }
-       // else{
           let addChat = document.createElement('div');
           addChat.className = "chat-display-template";
           addChat.id = chat.id; //object.id
-          //could possibly display the public rooms code
           let uniquecode = document.createElement("p");
           uniquecode.name = chat.name;
           uniquecode.id = "uniqueCode"+chat.id;
@@ -47,8 +41,6 @@ export function addChats(url){
                 userName = "Anon123";
             }
             let chatroomname = document.getElementById(`uniqueCode${addBtn.id}`).innerHTML;
-            
-            console.log("s");
             window.location.assign(userURL+"id="+roomCode+":name="+userName+":roomname="+chatroomname);
             //fetch ends here
         });
@@ -60,9 +52,6 @@ export function addChats(url){
         }
           document.getElementById("public-chat").append(newChats);
       }
-    //}
-    
   });
-
 }
 
