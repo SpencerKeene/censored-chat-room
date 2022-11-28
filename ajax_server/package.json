@@ -5,7 +5,8 @@
     "http-proxy": "^1.18.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
-    "portfinder": "^1.0.32"
+    "portfinder": "^1.0.32",
+    "ws": "^8.11.0"
   },
   "name": "ajax_server",
   "version": "1.0.0",
