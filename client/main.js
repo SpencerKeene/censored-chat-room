@@ -1,7 +1,7 @@
 import { addChats } from "./publicChats.js";
 //api url
-const url = "http://localhost:3000";
-const userURL = "http://127.0.0.1:5173/chat-page.html?";
+const url = "http://chat-room.live:3000";
+const userURL = "http://chat-room.live/chat-page.html?";
 document.querySelector("#username").innerHTML = `
       <div class="input-name">  
           <input type="text" id="UName" name="Chatname" placeholder="Enter name">

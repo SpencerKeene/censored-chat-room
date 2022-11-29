@@ -9,7 +9,7 @@ chatname = chatname.replaceAll("%20", " ");
 document.getElementById("chatroom-id").innerHTML = `
     Code: ${id}
 `;
-let socket = new WebSocket(`ws://localhost:3000/chatrooms/${id}`);
+let socket = new WebSocket(`ws://chat-room.live:3000/chatrooms/${id}`);
 socket.onopen = function(e){
     console.log("connected");
     let data = {

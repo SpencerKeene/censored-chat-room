@@ -3,7 +3,7 @@
 */
 
 //request and reload public chatrooms
-const userURL = "http://127.0.0.1:5173/chat-page.html?";
+const userURL = "http://chat-room.live/chat-page.html?";
 export function addChats(url){
  document.getElementById("public-chat").innerHTML = ""
   fetch(url).then(response => {
