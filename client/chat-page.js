@@ -20,6 +20,7 @@ socket.onopen = function(e){
     
 }
 socket.onerror=function(event){
+    console.log(event);
     let errorHTML = document.createDocumentFragment();
     let box = document.createElement("div");
     let errorText = document.createElement("h1");
@@ -87,6 +88,13 @@ socket.onmessage = (event) =>{
     }
     const chatBox = document.getElementById("chatBox");
     chatBox.scrollTop = chatBox.scrollHeight;
+}
+socket.onclose=function(event){
+    let data = {
+        user : username,
+        message : "Disconnected"
+    }
+    socket.send(JSON.stringify(data));
 }
 
 document.getElementById("send-button").addEventListener("click", (e) =>{
