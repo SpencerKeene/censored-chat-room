@@ -89,13 +89,23 @@ socket.onmessage = (event) =>{
     const chatBox = document.getElementById("chatBox");
     chatBox.scrollTop = chatBox.scrollHeight;
 }
-socket.onclose=function(event){
+
+window.onbeforeunload=function(event){
     let data = {
         user : username,
         message : "Disconnected"
     }
     socket.send(JSON.stringify(data));
 }
+
+document.getElementById("goBack").addEventListener("click", (e)=> {
+    history.back();
+    let data = {
+        user : username,
+        message : "Disconnected"
+    }
+    socket.send(JSON.stringify(data));
+});
 
 document.getElementById("send-button").addEventListener("click", (e) =>{
     let userMsg = document.getElementById("textbox").value;
