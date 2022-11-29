@@ -100,7 +100,6 @@ window.onbeforeunload=function(event){
 
 document.getElementById("goBack").addEventListener("click", (e)=> {
     window.location.assign("http://127.0.0.1");
-    history.back();
 });
 
 document.getElementById("send-button").addEventListener("click", (e) =>{
