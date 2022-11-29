@@ -99,12 +99,8 @@ window.onbeforeunload=function(event){
 }
 
 document.getElementById("goBack").addEventListener("click", (e)=> {
+    window.location.assign("http://127.0.0.1");
     history.back();
-    let data = {
-        user : username,
-        message : "Disconnected"
-    }
-    socket.send(JSON.stringify(data));
 });
 
 document.getElementById("send-button").addEventListener("click", (e) =>{
