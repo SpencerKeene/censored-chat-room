@@ -99,7 +99,7 @@ window.onbeforeunload=function(event){
 }
 
 document.getElementById("goBack").addEventListener("click", (e)=> {
-    window.location.assign("http://127.0.0.1");
+    window.location.assign("http://127.0.0.1:5173");
 });
 
 document.getElementById("send-button").addEventListener("click", (e) =>{
