@@ -20,6 +20,7 @@ socket.onopen = function(e){
     
 }
 socket.onerror=function(event){
+    console.log(event);
     let errorHTML = document.createDocumentFragment();
     let box = document.createElement("div");
     let errorText = document.createElement("h1");
@@ -88,6 +89,18 @@ socket.onmessage = (event) =>{
     const chatBox = document.getElementById("chatBox");
     chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+window.onbeforeunload=function(event){
+    let data = {
+        user : username,
+        message : "Disconnected"
+    }
+    socket.send(JSON.stringify(data));
+}
+
+document.getElementById("goBack").addEventListener("click", (e)=> {
+    window.location.assign("http://127.0.0.1:5173");
+});
 
 document.getElementById("send-button").addEventListener("click", (e) =>{
     let userMsg = document.getElementById("textbox").value;
